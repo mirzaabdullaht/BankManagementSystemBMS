@@ -54,6 +54,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+<<<<<<< HEAD
+=======
+    'bms.middleware.MaintenanceModeMiddleware',
+>>>>>>> f146474 ( commit — Phase 3 - 6 implementation)
 ]
 
 ROOT_URLCONF = 'bms.urls'
@@ -127,4 +131,23 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+<<<<<<< HEAD
 AUTH_USER_MODEL = 'users.User'
+=======
+AUTH_USER_MODEL = 'users.User'
+
+REST_FRAMEWORK = {
+    # ... previous settings
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ],
+}
+INSTALLED_APPS += ['constance']
+CONSTANCE_BACKEND = 'constance.backends.memory.MemoryBackend'
+CONSTANCE_CONFIG = {
+    'MAINTENANCE_MODE': (False, 'Is the site under maintenance?'),
+}
+
+>>>>>>> f146474 ( commit — Phase 3 - 6 implementation)
